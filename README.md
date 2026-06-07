@@ -62,13 +62,13 @@ SCENARIO = "xor"
 Aprire il terminale nella cartella del repository ed eseguire:
 
 ```bash
-python percettrone_due_dataset_commentato.py
+python Percettrone.py
 ```
 
 In alternativa, su alcuni sistemi Windows può essere necessario usare:
 
 ```bash
-py percettrone_due_dataset_commentato.py
+py Percettrone.py
 ```
 
 ## Output del programma
