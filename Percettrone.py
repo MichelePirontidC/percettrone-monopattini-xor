@@ -1,21 +1,17 @@
 """
 Percettrone semplice con due dataset dimostrativi.
 
-
 Scenari disponibili:
 - "monopattini": esempio originale dell'elaborato, linearmente separabile.
 - "xor": esempio classico non linearmente separabile.
 
-Per cambiare scenario, può modificare il valore della variabile SCENARIO.
+Dopo l'avvio del programma, si può scegliere quale scenario eseguire
+direttamente dal terminale.
 """
 
 # ---------------------------------------------------------------------------
 # CONFIGURAZIONE DELL'ESECUZIONE
 # ---------------------------------------------------------------------------
-# Selezionare lo scenario da eseguire.
-# Valori ammessi: "monopattini" oppure "xor".
-SCENARIO = "monopattini"
-
 # Il learning rate stabilisce l'ampiezza della correzione dei pesi.
 learning_rate = 1
 
@@ -68,19 +64,30 @@ dataset_xor = [
 
 
 # ---------------------------------------------------------------------------
-# SELEZIONE DEL DATASET
+# SCELTA INTERATTIVA DELLO SCENARIO
 # ---------------------------------------------------------------------------
-# In base al valore della variabile SCENARIO viene scelto il dataset
-# da usare nell'esecuzione. Se il valore non è valido, il programma
-# si interrompe con un messaggio di errore.
-if SCENARIO == "monopattini":
+# In questa parte il programma chiede all'utente quale dataset utilizzare.
+# La scelta avviene dopo l'avvio del file Python, direttamente dal terminale.
+#
+# Sono accettati sia i numeri sia i nomi degli scenari:
+# - 1 oppure "monopattini"
+# - 2 oppure "xor"
+
+print("Seleziona lo scenario da eseguire:")
+print("1 - Manutenzione monopattini elettrici")
+print("2 - XOR")
+print()
+
+scelta = input("Inserisci 1, 2, monopattini oppure xor: ").strip().lower()
+
+if scelta == "1" or scelta == "monopattini":
     dataset = dataset_monopattini
     nome_scenario = "Manutenzione monopattini elettrici"
-elif SCENARIO == "xor":
+elif scelta == "2" or scelta == "xor":
     dataset = dataset_xor
     nome_scenario = "XOR"
 else:
-    raise ValueError("SCENARIO deve essere 'monopattini' oppure 'xor'.")
+    raise ValueError("Scelta non valida. Inserire 1, 2, 'monopattini' oppure 'xor'.")
 
 
 # ---------------------------------------------------------------------------
@@ -94,7 +101,8 @@ else:
 numero_ingressi = len(dataset[0][0])
 pesi = [0] * (numero_ingressi + 1)
 
-print("Scenario:", nome_scenario)
+print()
+print("Scenario selezionato:", nome_scenario)
 print("Pesi iniziali:", pesi)
 print()
 
